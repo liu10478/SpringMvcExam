@@ -1,0 +1,22 @@
+#bodylogin{
+	height:65%;
+	padding-top: 15%;
+	padding-left: 30%;
+	padding-right: 30%;
+}
+#top{
+	background-color:white;
+	text-align: left;
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-bottom: 10px;
+}
+#login{
+	background-color:#c0c0c0;
+	padding-left:15%;
+	padding-top: 5%;
+	padding-bottom: 5%;
+}
+#id{
+	text-align: left;
+}

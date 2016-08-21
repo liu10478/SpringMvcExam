@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<typeAliases>
+<typeAlias alias="Customer" type="zyx.entity.Customer"/>
+<typeAlias alias="Address" type="zyx.entity.Address"/>
+<typeAlias alias="Store" type="zyx.entity.Store"/>
+<typeAlias alias="Page" type="zyx.entity.Page"/>
+</typeAliases>
+<mappers>
+<mapper resource="model/Customer.xml"/>
+<mapper resource="model/Store.xml"/>
+<mapper resource="model/Address.xml"/>
+</mappers>
+</configuration>

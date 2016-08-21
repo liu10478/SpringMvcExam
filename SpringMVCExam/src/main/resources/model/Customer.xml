@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="zyx.Dao.ICustomer">
+<resultMap type="Customer" id="Customers">
+<result column="customer_id" property="customer_id" />
+<result column="first_name" property="first_name" />
+<result column="last_name" property="last_name" />
+<result column="email" property="email" />
+<result column="last_update" property="last_update" />
+<association property="address" javaType="zyx.entity.Address">
+<result property="address" column="address"/>
+</association>
+</resultMap>
+
+
+	<!--获取customerlist总数  -->
+	<select id="getCustomerCount" resultType="int" >
+		select count(*) from customer 
+	</select>
+	<!-- 分页使用SQL -->
+     <select id="getCustomerByPage"  resultMap="Customers"  parameterType="Page">
+         select * from customer,address where customer.address_id=address.address_id limit #{begin},#{num} 
+     </select>
+	
+	<select id="list" resultMap="Customers">
+		select * from Customer
+	</select>
+
+	<insert id="addCustomer" parameterType="Customer">
+		insert into
+		customer(store_id,first_name,last_name,email,address_id,create_date)
+		values(#{store_id},#{first_name},#{last_name},#{email},#{address.address_id},#{create_date})
+	</insert>
+
+	<delete id="deleteCustomer" parameterType="int">
+		delete from customer where customer_id=#{customer_id}
+	</delete>
+
+	<select id="queryCustomerById" resultMap="Customers"
+		parameterType="int">
+		select * from Customer where customer_id=#{customer_id}
+	</select>
+
+	<select id="queryCustomerByFirstname" resultMap="Customers"
+		parameterType="String">
+		select * from Customer where first_name=#{first_name}
+	</select>
+	
+	<update id="updateCustomer" parameterType="Customer">
+		update Customer set first_name=#{first_name},last_name=#{last_name},email=#{email},address_id=#{address.address_id} where customer_id=#{customer_id}
+	</update>
+
+</mapper>
